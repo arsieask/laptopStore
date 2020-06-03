@@ -10,11 +10,14 @@ const server = http.createServer((req, res) => {
     const pathName = url.parse(req.url, true).pathname;
     const id = url.parse(req.url, true).query.id;
     
+
+    // PRODUCTS OVERVIEW
     if (pathName === '/products' || pathName === '/') {
         res.writeHead(200, { 'Content-type': 'text/html'});
         res.end('products page');
     }
 
+    // LAPTOP DETAIL
     else if (pathName === '/laptop' && id < laptopData.length) {
         res.writeHead(200, { 'Content-type': 'text/html'});
         
@@ -25,6 +28,7 @@ const server = http.createServer((req, res) => {
         });
     }
 
+    // URL NOT FOUND
     else {
         res.writeHead(404, { 'Content-type': 'text/html'});
         res.end('URL was not found on the server!');
